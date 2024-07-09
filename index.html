@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="تحدي إكمال الآيات القرآنية - اختبر حفظك للقرآن الكريم وأكمل الآيات في الوقت المحدد">
+    <meta name="keywords" content="قرآن, تحدي, إكمال الآيات, القرآن الكريم, مسابقات دينية, تحديات قرآنية">
+    <meta name="robots" content="index, follow">
+    
+    <title>تحدي إكمال الآيات القرآنية - اختبر حفظك للقرآن الكريم وأكمل الآيات في الوقت المحدد</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/Qurantest/images/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/Qurantest/images/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/Qurantest/images/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/Qurantest/images/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/Qurantest/images/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/Qurantest/images/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/Qurantest/images/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/Qurantest/images/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/Qurantest/images/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/Qurantest/images/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/Qurantest/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/Qurantest/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/Qurantest/images/favicon-16x16.png">
+    <link rel="manifest" href="/Qurantest/images/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/Qurantest/images/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+  
+      <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSX14QQ0KK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-QSX14QQ0KK');
+    </script>
+  
+</head>
+<body>
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <div class="contact-share">
+    <a id="shareLink">مشاركة</a>
+    <a href="/contact.html">تواصل</a>
+  </div>
+
+  <div class="dropdown">
+    <button onclick="toggleDropdown()" class="dropbtn">
+      القائمة <i class="fa fa-caret-down"></i>
+    </button>
+    <div id="myDropdown" class="dropdown-content">
+      <a id="mobileShareLink">مشاركة</a>
+      <a href="/contact.html">تواصل</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h1>تحدي إكمال الآيات القرآنية</h1>
+
+    <div class="stats-container">
+      <div class="stat">
+        <i class="fas fa-trophy"></i> أفضل نتيجة: <span id="bestScoreValue" class="stat-value">0</span>
+      </div>
+      <div class="stat">
+        <i class="fas fa-star"></i> النقاط: <span id="scoreValue" class="stat-value">0</span>
+      </div>
+    </div>
+
+    <div class="ayah-container">
+      <div class="surah-selector">
+        <select id="surahSelect">
+          <option value="random">عشوائي</option>
+        </select>
+      </div>
+      <div class="timer-selector">
+        <select id="timerSelect">
+          <option value="30">30 ثانية</option>
+          <option value="60" selected>60 ثانية</option>
+          <option value="90">90 ثانية</option>
+          <option value="120">120 ثانية</option>
+          <option value="custom">مخصص</option>
+        </select>
+        <input type="number" id="customTimerInput" min="1" max="3600" value="60">
+      </div>
+      <div id="ayah" class="ayah">
+        <div class="loading-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div id="ayahInfo"></div>
+      <div class="tashkil-toggle">
+        <input type="checkbox" id="tashkilToggle" checked>
+        <label for="tashkilToggle">التشكيل</label>
+      </div>
+    </div>
+
+    <div class="input-container">
+      <input type="text" id="userInput" placeholder="اكتب تتمة الآية هنا" aria-label="Enter verse completion">
+      <button id="checkButton" onclick="checkAnswer()" class="btn btn-check">
+        <i class="fas fa-check"></i> تحقق
+      </button>
+      <button onclick="nextAyah()" class="btn btn-next">
+        <i class="fas fa-forward"></i> التالي
+      </button>
+    </div>
+
+    <div id="result"></div>
+    <div id="tafsir"></div>
+
+    <button id="audioButton" class="audio-button">
+      <i class="fas fa-volume-up"></i> استمع إلى الآية
+    </button>
+
+    <div id="timer">
+      <i class="fas fa-hourglass-half"></i> الوقت المتبقي: <span id="timeLeft">60</span> ثانية
+    </div>
+    
+  </div>
+  
+  
+   <div class="overlay" id="overlay"></div>
+<div class="share-card" id="shareCard">
+    <button class="close-button" id="closeShareCard">&times;</button>
+    <h2>مشاركة التحدي</h2>
+    <p class="share-text">الدال على الخير كفاعله. شارك ولك الأجر إن شاء الله</p>
+    <div class="share-buttons">
+        <button class="share-button" id="copyLink">
+            <i class="fas fa-link"></i> نسخ الرابط
+        </button>
+        <button class="share-button" onclick="shareOnFacebook()">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button class="share-button" onclick="shareOnTwitter()">
+            <i class="fab fa-x"></i>
+        </button>
+        <button class="share-button" onclick="shareOnWhatsApp()">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+        <button class="share-button" onclick="shareOnLinkedIn()">
+            <i class="fab fa-linkedin-in"></i>
+        </button>
+        <button class="share-button" onclick="shareOnTelegram()">
+            <i class="fab fa-telegram-plane"></i>
+        </button>
+    </div>
+</div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
+ 
