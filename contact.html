@@ -1,11 +1,13 @@
-<html><head><base href="/" />
+<html>
+<head>
+<base href="/" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>تواصل معنا - تحدي إكمال الآيات القرآنية</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-   :root {
+  :root {
     --bg-color: #000000;
     --text-color: #ffffff;
     --accent-color: #ffffff;
@@ -152,20 +154,13 @@
   .theme-toggle,
   .back-arrow {
     position: fixed;
-    background-color: var(--secondary-bg);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
+    background: none;
+    border: none;
     color: var(--text-color);
     font-size: 1.5rem;
     cursor: pointer;
     transition: var(--transition);
-    text-decoration: none;
+    z-index: 1000;
   }
 
   .theme-toggle {
@@ -176,11 +171,15 @@
   .back-arrow {
     top: 1rem;
     right: 1rem;
+    text-decoration: none;
   }
 
-  .theme-toggle:hover,
+  .theme-toggle:hover {
+    transform: rotate(180deg);
+  }
+
   .back-arrow:hover {
-    transform: scale(1.1);
+    transform: translateX(-5px);
   }
 
   .social-links {
@@ -266,6 +265,21 @@
     .contact-intro, .contact-form {
       padding: 1.5rem;
     }
+
+    .theme-toggle,
+    .back-arrow {
+      font-size: 1.8rem;
+    }
+
+    .theme-toggle {
+      top: 0.75rem;
+      left: 0.75rem;
+    }
+
+    .back-arrow {
+      top: 0.75rem;
+      right: 0.75rem;
+    }
   }
 
   @media (max-width: 480px) {
@@ -275,9 +289,7 @@
 
     .theme-toggle,
     .back-arrow {
-      width: 50px;
-      height: 50px;
-      font-size: 1.5rem;
+      font-size: 2rem;
     }
 
     .theme-toggle {
@@ -291,7 +303,7 @@
     }
 
     .container {
-      padding-top: 60px;
+      padding-top: 3rem;
     }
 
     .social-links a {
