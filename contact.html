@@ -377,7 +377,6 @@
             }
         }
 
-        /* New styles for the pop-up */
         .popup {
             display: none;
             position: fixed;
@@ -405,6 +404,29 @@
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
+        }
+
+        /* New styles for the loading spinner */
+        .spinner {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--accent-color);
+            border-top: 4px solid var(--bg-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Disable the button when loading */
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
     </style>
 
@@ -440,7 +462,8 @@
             <p>بسم الله الرحمن الرحيم</p>
             <p>أيها الإخوة والأخوات في الله،</p>
             <p>السلام عليكم ورحمة الله وبركاته،</p>
-            <p>نحمد الله تعالى الذي وفقنا لخدمة كتابه الكريم، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه أجمعين<p>يسرنا تواصلكم معنا في موقع تحدي تتمة الآيات القرآنية، سعياً منا لتحسين هذه الوسيلة المباركة لحفظ كتاب الله عز وجل. قال تعالى: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ﴾ [المائدة: 2]، وإن من أعظم البر خدمة القرآن الكريم وأهله.</p>
+            <p>نحمد الله تعالى الذي وفقنا لخدمة كتابه الكريم، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه أجمعين</p>
+            <p>يسرنا تواصلكم معنا في موقع تحدي تتمة الآيات القرآنية، سعياً منا لتحسين هذه الوسيلة المباركة لحفظ كتاب الله عز وجل. قال تعالى: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ﴾ [المائدة: 2]، وإن من أعظم البر خدمة القرآن الكريم وأهله.</p>
             <p>نرحب بمقترحاتكم القيمة لتطوير الموقع، كما نأمل منكم إبلاغنا بأي مشكلة قد تواجهونها أثناء استخدامه. فبتعاونكم نرتقي بهذا العمل الخالص لوجه الله تعالى.</p>
         </div>
 
@@ -464,14 +487,18 @@
                     <textarea id="message" name="message" required placeholder="اكتب رسالتك هنا"></textarea>
                 </div>
 
-                <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> إرسال</button>
+                <button type="submit" id="submitBtn" class="btn">
+                    <i class="fas fa-paper-plane"></i> إرسال
+                </button>
             </form>
+            <!-- Add the spinner element -->
+            <div id="loadingSpinner" class="spinner"></div>
         </div>
 
         <div class="social-links">
-            <a href="https://facebook.com/qurantest" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com/qurantest" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com/qurantest" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 
@@ -488,6 +515,8 @@
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
@@ -522,17 +551,30 @@
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
 
-            const formData = new FormData(form);
-            const response = await fetch('https://formsubmit.co/ajax/unlimitedgpt@gmail.com', {
-                method: 'POST',
-                body: formData
-            });
+            // Show loading spinner and disable submit button
+            loadingSpinner.style.display = 'block';
+            submitBtn.disabled = true;
 
-            if (response.ok) {
-                popup.style.display = 'block';
-                form.reset();
-            } else {
+            const formData = new FormData(form);
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/unlimitedgpt@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    popup.style.display = 'block';
+                    form.reset();
+                } else {
+                    alert('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
                 alert('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.');
+            } finally {
+                // Hide loading spinner and re-enable submit button
+                loadingSpinner.style.display = 'none';
+                submitBtn.disabled = false;
             }
         });
 
