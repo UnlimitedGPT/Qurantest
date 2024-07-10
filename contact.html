@@ -1,11 +1,12 @@
-<html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-<base href="/" />
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تواصل معنا - تحدي إكمال الآيات القرآنية</title>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <base href="/" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تواصل معنا - تحدي إكمال الآيات القرآنية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <link rel="apple-touch-icon" sizes="57x57" href="/Qurantest/images/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/Qurantest/images/apple-icon-60x60.png">
@@ -25,486 +26,475 @@
     <meta name="msapplication-TileImage" content="/Qurantest/images/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
+    <style>
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #ffffff;
+            --secondary-bg: #111111;
+            --hover-color: #333333;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-  
-<style>
-  :root {
-    --bg-color: #000000;
-    --text-color: #ffffff;
-    --accent-color: #ffffff;
-    --secondary-bg: #111111;
-    --hover-color: #333333;
-    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            direction: rtl;
+            overflow-x: hidden;
+        }
 
-  body {
-    font-family: 'Cairo', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition);
-    direction: rtl;
-    overflow-x: hidden;
-  }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
 
-  .container {
-    width: 90%;
-    max-width: 800px;
-    padding: 2rem;
-    position: relative;
-    z-index: 1;
-  }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
 
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-weight: 700;
-    letter-spacing: 2px;
-    position: relative;
-    overflow: hidden;
-  }
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: translateX(-50%);
+            transition: var(--transition);
+        }
 
-  h1::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 50px;
-    height: 2px;
-    background-color: var(--accent-color);
-    transform: translateX(-50%);
-    transition: var(--transition);
-  }
+        .contact-intro {
+            background-color: var(--secondary-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
 
-  .contact-intro {
-    background-color: var(--secondary-bg);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-    line-height: 1.8;
-    font-size: 1.1rem;
-  }
+        .contact-form {
+            background-color: var(--secondary-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
 
-  .contact-form {
-    background-color: var(--secondary-bg);
-    border-radius: 15px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: var(--transition);
-  }
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
 
-  .input-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-    position: relative;
-  }
+        label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
 
-  label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: var(--transition);
-  }
+        input[type="text"], input[type="email"], textarea {
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: none;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            border-radius: 10px;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+            resize: none;
+        }
 
-  input[type="text"], input[type="email"], textarea {
-    padding: 1rem;
-    font-size: 1.1rem;
-    border: none;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    border-radius: 10px;
-    transition: var(--transition);
-    font-family: 'Cairo', sans-serif;
-    resize: none;
-  }
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent-color);
+        }
 
-  input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px var(--accent-color);
-  }
+        textarea {
+            min-height: 120px;
+        }
 
-  textarea {
-    min-height: 120px;
-  }
+        .btn {
+            padding: 1rem 1.5rem;
+            font-size: 1.2rem;
+            border: none;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+            border-radius: 10px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
 
-  .btn {
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    border: none;
-    background-color: var(--accent-color);
-    color: var(--bg-color);
-    cursor: pointer;
-    transition: var(--transition);
-    font-family: 'Cairo', sans-serif;
-    font-weight: 700;
-    border-radius: 10px;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-  }
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease-out, height 0.6s ease-out;
+        }
 
-  .btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease-out, height 0.6s ease-out;
-  }
+        .btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
 
-  .btn:hover::after {
-    width: 300px;
-    height: 300px;
-  }
+        .theme-toggle,
+        .back-arrow {
+            position: fixed;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1000;
+        }
 
-  .theme-toggle,
-  .back-arrow {
-    position: fixed;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 1.5rem;
-    cursor: pointer;
-    transition: var(--transition);
-    z-index: 1000;
-  }
+        .theme-toggle {
+            top: 1rem;
+            left: 1rem;
+        }
 
-  .theme-toggle {
-    top: 1rem;
-    left: 1rem;
-  }
+        .back-arrow {
+            top: 1rem;
+            right: 1rem;
+            text-decoration: none;
+        }
 
-  .back-arrow {
-    top: 1rem;
-    right: 1rem;
-    text-decoration: none;
-  }
+        .theme-toggle:hover {
+            transform: rotate(180deg);
+        }
 
-  .theme-toggle:hover {
-    transform: rotate(180deg);
-  }
+        .back-arrow:hover {
+            transform: translateX(-5px);
+        }
 
-  .back-arrow:hover {
-    transform: translateX(-5px);
-  }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
 
-  .social-links {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-  }
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: var(--transition);
+        }
 
-  .social-links a {
-    color: var(--text-color);
-    font-size: 1.5rem;
-    margin: 0 1rem;
-    transition: var(--transition);
-  }
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-5px);
+        }
 
-  .social-links a:hover {
-    color: var(--accent-color);
-    transform: translateY(-5px);
-  }
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.1;
+        }
 
-  .background-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.1;
-  }
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(100px, 100px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
 
-  @keyframes move {
-    0% {
-      transform: translate(0, 0);
-    }
-    50% {
-      transform: translate(100px, 100px);
-    }
-    100% {
-      transform: translate(0, 0);
-    }
-  }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-color);
+            animation: move 20s infinite;
+            opacity: 0.3;
+        }
 
-  .shape {
-    position: absolute;
-    border-radius: 50%;
-    background: var(--accent-color);
-    animation: move 20s infinite;
-    opacity: 0.3;
-  }
+        .shape:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            left: -200px;
+            top: -200px;
+        }
 
-  .shape:nth-child(1) {
-    width: 400px;
-    height: 400px;
-    left: -200px;
-    top: -200px;
-  }
+        .shape:nth-child(2) {
+            width: 300px;
+            height: 300px;
+            right: -150px;
+            bottom: -150px;
+            animation-delay: -5s;
+        }
 
-  .shape:nth-child(2) {
-    width: 300px;
-    height: 300px;
-    right: -150px;
-    bottom: -150px;
-    animation-delay: -5s;
-  }
+        .shape:nth-child(3) {
+            width: 200px;
+            height: 200px;
+            left: 50%;
+            top: 50%;
+            animation-delay: -10s;
+        }
 
-  .shape:nth-child(3) {
-    width: 200px;
-    height: 200px;
-    left: 50%;
-    top: 50%;
-    animation-delay: -10s;
-  }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
 
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2.5rem;
-    }
+            .container {
+                padding: 1rem;
+            }
 
-    .container {
-      padding: 1rem;
-    }
+            .contact-intro, .contact-form {
+                padding: 1.5rem;
+            }
 
-    .contact-intro, .contact-form {
-      padding: 1.5rem;
-    }
+            .theme-toggle,
+            .back-arrow {
+                font-size: 1.8rem;
+            }
 
-    .theme-toggle,
-    .back-arrow {
-      font-size: 1.8rem;
-    }
+            .theme-toggle {
+                top: 0.75rem;
+                left: 0.75rem;
+            }
 
-    .theme-toggle {
-      top: 0.75rem;
-      left: 0.75rem;
-    }
+            .back-arrow {
+                top: 0.75rem;
+                right: 0.75rem;
+            }
+        }
 
-    .back-arrow {
-      top: 0.75rem;
-      right: 0.75rem;
-    }
-  }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
 
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 2rem;
-    }
+            .theme-toggle,
+            .back-arrow {
+                font-size: 2rem;
+            }
 
-    .theme-toggle,
-    .back-arrow {
-      font-size: 2rem;
-    }
+            .theme-toggle {
+                top: 0.5rem;
+                left: 0.5rem;
+            }
 
-    .theme-toggle {
-      top: 0.5rem;
-      left: 0.5rem;
-    }
+            .back-arrow {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
 
-    .back-arrow {
-      top: 0.5rem;
-      right: 0.5rem;
-    }
+            .container {
+                padding-top: 3rem;
+            }
 
-    .container {
-      padding-top: 3rem;
-    }
+            .social-links a {
+                font-size: 1.2rem;
+                margin: 0 0.5rem;
+            }
+        }
 
-    .social-links a {
-      font-size: 1.2rem;
-      margin: 0 0.5rem;
-    }
-  }
+        .light-theme {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --secondary-bg: #f0f0f0;
+            --hover-color: #e0e0e0;
+        }
 
-  .light-theme {
-    --bg-color: #ffffff;
-    --text-color: #000000;
-    --secondary-bg: #f0f0f0;
-    --hover-color: #e0e0e0;
-  }
+        .light-theme .btn {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
 
-  .light-theme .btn {
-    background-color: var(--text-color);
-    color: var(--bg-color);
-  }
+        .light-theme .social-links a:hover {
+            color: var(--text-color);
+        }
 
-  .light-theme .social-links a:hover {
-    color: var(--text-color);
-  }
+        .light-theme .btn::after {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
 
-  .light-theme .btn::after {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
+        .particle {
+            position: absolute;
+            background-color: var(--accent-color);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 10s infinite ease-in-out;
+        }
 
-  .particle {
-    position: absolute;
-    background-color: var(--accent-color);
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: float 10s infinite ease-in-out;
-  }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            25% {
+                transform: translateY(-30px) translateX(30px);
+            }
+            50% {
+                transform: translateY(-60px) translateX(-30px);
+            }
+            75% {
+                transform: translateY(-30px) translateX(60px);
+            }
+        }
+    </style>
 
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0) translateX(0);
-    }
-    25% {
-      transform: translateY(-30px) translateX(30px);
-    }
-    50% {
-      transform: translateY(-60px) translateX(-30px);
-    }
-    75% {
-      transform: translateY(-30px) translateX(60px);
-    }
-  }
-</style>
-
-      <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSX14QQ0KK"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'G-QSX14QQ0KK');
+        gtag('config', 'G-QSX14QQ0KK');
     </script>
-    
 </head>
 <body>
-  <div class="background-animation">
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
-
-  <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
-    <i class="fas fa-sun"></i>
-  </button>
-
-  <a href="/Qurantest/" class="back-arrow" aria-label="Back to home">
-    <i class="fas fa-arrow-right"></i>
-  </a>
-
-  <div class="container">
-    <h1>تواصل معنا</h1>
-
-    <div class="contact-intro">
-      <p>بسم الله الرحمن الرحيم</p>
-      <p>أيها الإخوة والأخوات في الله،</p>
-      <p>السلام عليكم ورحمة الله وبركاته،</p>
-      <p>نحمد الله تعالى الذي وفقنا لخدمة كتابه الكريم، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه أجمعين.</p>
-      <p>يسرنا تواصلكم معنا في موقع تحدي تتمة الآيات القرآنية، سعياً منا لتحسين هذه الوسيلة المباركة لحفظ كتاب الله عز وجل. قال تعالى: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ﴾ [المائدة: 2]، وإن من أعظم البر خدمة القرآن الكريم وأهله.</p>
-      <p>نرحب بمقترحاتكم القيمة لتطوير الموقع، كما نأمل منكم إبلاغنا بأي مشكلة قد تواجهونها أثناء استخدامه. فبتعاونكم نرتقي بهذا العمل الخالص لوجه الله تعالى.</p>
+    <div class="background-animation">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
 
-    <div class="contact-form">
-      <form id="contactForm">
-        <div class="input-container">
-          <label for="name"><i class="fas fa-user"></i> الاسم:</label>
-          <input type="text" id="name" name="name" required placeholder="أدخل اسمك هنا">
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun"></i>
+    </button>
+
+    <a href="/Qurantest/" class="back-arrow" aria-label="Back to home">
+        <i class="fas fa-arrow-right"></i>
+    </a>
+
+    <div class="container">
+        <h1>تواصل معنا</h1>
+
+        <div class="contact-intro">
+            <p>بسم الله الرحمن الرحيم</p>
+            <p>أيها الإخوة والأخوات في الله،</p>
+            <p>السلام عليكم ورحمة الله وبركاته،</p>
+            <p>نحمد الله تعالى الذي وفقنا لخدمة كتابه الكريم، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه أجمعين.</p>
+            <p>يسرنا تواصلكم معنا في موقع تحدي تتمة الآيات القرآنية، سعياً منا لتحسين هذه الوسيلة المباركة لحفظ كتاب الله عز وجل. قال تعالى: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ﴾ [المائدة: 2]، وإن من أعظم البر خدمة القرآن الكريم وأهله.</p>
+            <p>نرحب بمقترحاتكم القيمة لتطوير الموقع، كما نأمل منكم إبلاغنا بأي مشكلة قد تواجهونها أثناء استخدامه. فبتعاونكم نرتقي بهذا العمل الخالص لوجه الله تعالى.</p>
         </div>
 
-        <div class="input-container">
-          <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني:</label>
-          <input type="email" id="email" name="email" required placeholder="أدخل بريدك الإلكتروني هنا">
+        <div class="contact-form">
+            <form action="https://formsubmit.co/unlimitedgpt@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New submission from Quran Test Contact Form">
+                <input type="hidden" name="_next" value="https://qurantest.com/thank-you.html">
+                <input type="text" name="_honey" style="display:none">
+                
+                <div class="input-container">
+                    <label for="name"><i class="fas fa-user"></i> الاسم:</label>
+                    <input type="text" id="name" name="name" required placeholder="أدخل اسمك هنا">
+                </div>
+
+                <div class="input-container">
+                    <label for="email"><i class="fas fa-envelope"></i> البريد الإلكتروني:</label>
+                    <input type="email" id="email" name="email" required placeholder="أدخل بريدك الإلكتروني هنا">
+                </div>
+
+                <div class="input-container">
+                    <label for="message"><i class="fas fa-comment"></i> الرسالة:</label>
+                    <textarea id="message" name="message" required placeholder="اكتب رسالتك هنا"></textarea>
+                </div>
+
+                <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> إرسال</button>
+            </form>
         </div>
 
-        <div class="input-container">
-          <label for="message"><i class="fas fa-comment"></i> الرسالة:</label>
-          <textarea id="message" name="message" required placeholder="اكتب رسالتك هنا"></textarea>
+        <div class="social-links">
+            <a href="https://facebook.com/qurantest" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/qurantest" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com/qurantest" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
-
-        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> إرسال</button>
-      </form>
     </div>
 
-    <div class="social-links">
-      <a href="https://facebook.com/qurantest" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://twitter.com/qurantest" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="https://instagram.com/qurantest" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-    </div>
-  </div>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const form = document.querySelector('form');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const messageInput = document.getElementById('message');
 
-  <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const body = document.body;
-    const form = document.getElementById('contactForm');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const messageInput = document.getElementById('message');
+        function toggleTheme() {
+            body.classList.toggle('light-theme');
+            const themeIcon = themeToggle.querySelector('i');
+            if (body.classList.contains('light-theme')) {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
 
-    function toggleTheme() {
-      body.classList.toggle('light-theme');
-      const themeIcon = themeToggle.querySelector('i');
-      if (body.classList.contains('light-theme')) {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-      } else {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-      }
-    }
+        function animateInput(input) {
+            input.style.transform = 'translateY(-5px)';
+            setTimeout(() => {
+                input.style.transform = 'translateY(0)';
+            }, 300);
+        }
 
-    function animateInput(input) {
-      input.style.transform = 'translateY(-5px)';
-      setTimeout(() => {
-        input.style.transform = 'translateY(0)';
-      }, 300);
-    }
+        themeToggle.addEventListener('click', toggleTheme);
 
-    themeToggle.addEventListener('click', toggleTheme);
+        [nameInput, emailInput, messageInput].forEach(input => {
+            input.addEventListener('focus', () => animateInput(input));
+        });
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      // Here you would typically send the form data to a server
-      console.log('Form submitted:', {
-        name: nameInput.value,
-        email: emailInput.value,
-        message: messageInput.value
-      });
-      alert('شكراً لتواصلك معنا. سنرد عليك في أقرب وقت ممكن.');
-      form.reset();
-    });
+        // Background animation
+        function createParticles() {
+            const particlesContainer = document.querySelector('.background-animation');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
 
-    [nameInput, emailInput, messageInput].forEach(input => {
-      input.addEventListener('focus', () => animateInput(input));
-    });
-
-    // Background animation
-    function createParticles() {
-      const particlesContainer = document.querySelector('.background-animation');
-      for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.top = `${Math.random() * 100}%`;
-        particle.style.animationDuration = `${Math.random() * 10 + 5}s`;
-        particle.style.animationDelay = `${Math.random() * 5}s`;
-        particlesContainer.appendChild(particle);
-      }
-    }
-
-    createParticles();
-  </script>
+        createParticles();
+    </script>
 </body>
 </html>
