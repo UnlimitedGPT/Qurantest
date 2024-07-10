@@ -376,6 +376,36 @@
                 transform: translateY(-30px) translateX(60px);
             }
         }
+
+        /* New styles for the pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--secondary-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .popup-content {
+            margin-bottom: 20px;
+        }
+
+        .close-popup {
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 700;
+        }
     </style>
 
     <!-- Google tag (gtag.js) -->
@@ -410,15 +440,13 @@
             <p>بسم الله الرحمن الرحيم</p>
             <p>أيها الإخوة والأخوات في الله،</p>
             <p>السلام عليكم ورحمة الله وبركاته،</p>
-            <p>نحمد الله تعالى الذي وفقنا لخدمة كتابه الكريم، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه أجمعين.</p>
-            <p>يسرنا تواصلكم معنا في موقع تحدي تتمة الآيات القرآنية، سعياً منا لتحسين هذه الوسيلة المباركة لحفظ كتاب الله عز وجل. قال تعالى: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ﴾ [المائدة: 2]، وإن من أعظم البر خدمة القرآن الكريم وأهله.</p>
+            <p>نحمد الله تعالى الذي وفقنا لخدمة كتابه الكريم، ونصلي ونسلم على نبينا محمد وعلى آله وصحبه أجمعين<p>يسرنا تواصلكم معنا في موقع تحدي تتمة الآيات القرآنية، سعياً منا لتحسين هذه الوسيلة المباركة لحفظ كتاب الله عز وجل. قال تعالى: ﴿وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ﴾ [المائدة: 2]، وإن من أعظم البر خدمة القرآن الكريم وأهله.</p>
             <p>نرحب بمقترحاتكم القيمة لتطوير الموقع، كما نأمل منكم إبلاغنا بأي مشكلة قد تواجهونها أثناء استخدامه. فبتعاونكم نرتقي بهذا العمل الخالص لوجه الله تعالى.</p>
         </div>
 
         <div class="contact-form">
-            <form action="https://formsubmit.co/unlimitedgpt@gmail.com" method="POST">
+            <form id="contactForm">
                 <input type="hidden" name="_subject" value="New submission from Quran Test Contact Form">
-                <input type="hidden" name="_next" value="https://qurantest.com/thank-you.html">
                 <input type="text" name="_honey" style="display:none">
                 
                 <div class="input-container">
@@ -447,13 +475,24 @@
         </div>
     </div>
 
+    <!-- Add this new div for the pop-up -->
+    <div id="thankYouPopup" class="popup">
+        <div class="popup-content">
+            <h2>شكراً لتواصلك معنا</h2>
+            <p>لقد تم استلام رسالتك بنجاح. سنقوم بالرد عليك في أقرب وقت ممكن.</p>
+        </div>
+        <button class="close-popup">إغلاق</button>
+    </div>
+
     <script>
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-        const form = document.querySelector('form');
+        const form = document.getElementById('contactForm');
         const nameInput = document.getElementById('name');
         const emailInput = document.getElementById('email');
         const messageInput = document.getElementById('message');
+        const popup = document.getElementById('thankYouPopup');
+        const closePopupButton = document.querySelector('.close-popup');
 
         function toggleTheme() {
             body.classList.toggle('light-theme');
@@ -478,6 +517,27 @@
 
         [nameInput, emailInput, messageInput].forEach(input => {
             input.addEventListener('focus', () => animateInput(input));
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const response = await fetch('https://formsubmit.co/ajax/unlimitedgpt@gmail.com', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                popup.style.display = 'block';
+                form.reset();
+            } else {
+                alert('حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.');
+            }
+        });
+
+        closePopupButton.addEventListener('click', () => {
+            popup.style.display = 'none';
         });
 
         // Background animation
